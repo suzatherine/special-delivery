@@ -1,0 +1,1062 @@
+:: StoryTitle
+Special Delivery
+
+
+:: StoryData
+{
+	"ifid": "BEC9A08E-B200-4353-B33E-3BB0FB14BA91",
+	"format": "SugarCube",
+	"format-version": "2.36.1",
+	"start": "landing",
+	"zoom": 0.6
+}
+
+
+:: Story Stylesheet [stylesheet]
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap");
+
+/* GENERICS */
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; /* Mostly equivalates to 10px but allows users accessibility zoom settings to work*/
+  /* font-size: 10px; */
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  min-height: 100vh;
+}
+
+body {
+  font-size: 10px;
+  margin: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/* Try to keep your margins going in one direction to avoid margin collapase or grounding. I switch all the top margins off to avoid this issue. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+blockquote,
+address,
+article,
+aside,
+details,
+dialogue,
+fieldset,
+figcaption,
+figure,
+footer,
+form,
+header,
+hr,
+main,
+nav,
+pre,
+section,
+table,
+p {
+  margin-top: 0;
+  margin-block-start: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  /* You MUST make sure that links stand out from nomal text though...*/
+}
+
+
+img {
+  /* This means that it can be less than 100% of the width of its parent IF the image is INTRINSICALLY smaller */
+  max-width: 100%;
+
+  height: auto;
+  /* 'auto' is the initial value for height BUT for images (and other elements which have an intrinic height) that is not the case. To make an image responsive you set one dimension (usually width) to [max-]width: 100%; and the other to 'auto' to ensure it keeps aspect ratio. 'auto' basically tells the browser to decide. */
+  vertical-align: middle;
+  /* minor vertical centering. Works for images IF there is a baseline (i.e. they are displayed inline or inline-block) */
+}
+
+/* Because we us <ul>s for lists that we don't always want bulletted. */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* To make actual bulletted lists */
+ul.typographic {
+  list-style: initial;
+  padding-inline-start: 20px;
+}
+
+/* stops icons being the target of JS click events */
+a.btn *,
+button * {
+  pointer-events: null;
+}
+
+/* For 'accessibility text'. If your button only has an image inside it that isn't good for accessibility. Put a span inside there and give it this class and put some descriptive text for what the button does into the span. */
+
+.sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: polygon(0px 0px, 0px 0px, 0px 0px);
+  -webkit-clip-path: polygon(0px 0px, 0px 0px, 0px 0px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  clip-path: auto;
+  -webkit-clip-path: auto;
+  white-space: normal;
+}
+
+/* GET RID OF TWINE STYLES */
+#story{
+  margin:0
+}
+
+#passages {
+	max-width: 100%;
+
+}
+
+#story a.link-external:after {
+	content: "";
+}
+
+button{
+    background-color: transparent;
+    border: #fff 1px solid;
+    border-radius: 3px;
+}
+
+button:hover{
+	background-color:#ea9e25;
+	border: #fff 1px solid;
+	color: #fff;
+}
+
+a {
+  color:#ea9e25;;
+}
+
+a:active {
+  background-color: #ea9e25;;
+}
+
+a:hover {
+  color: #fff;
+}
+
+#story a.link-external:after {
+	content: "";
+}
+
+#story {
+	margin: 0
+}
+
+/* GENERAL STYLES */
+body{
+  font-size: 1.8rem;
+  font-weight: 600;
+  font-family: "Space Grotesk";
+  color:#fff;
+  /* color:#000; */
+  overflow:scroll;
+  background:#188081;
+  /* padding: 1.5rem */
+  display:flex;
+  flex-direction: column
+}
+
+header{
+  display:flex;
+  justify-content: flex-end;
+  align-items: center;
+    padding: 2rem
+}
+
+main{
+   padding: 2rem;
+  margin-block-end: 10rem
+}
+
+h2.title{
+  font-size:2.5rem
+}
+
+/* FOOTER  */
+
+footer{
+   display:flex;
+  justify-content: space-between;
+align-items: end;
+  position:fixed;
+  bottom: 0;
+  padding: 2rem;
+  width: 100%;
+background: #188081;
+}
+
+nav{
+  display:flex;
+    justify-content: space-between;
+}
+
+.nav-wrapper{
+display:flex;
+  flex-direction:column;
+align-items: flex-start
+}
+
+.nav-wrapper:last-child{
+align-items: flex-end
+}
+
+.nav-item{
+  margin-block-end: 0.5rem;
+  width:100%;
+  display:flex
+}
+
+.nav-item.replay, .nav-item.end{
+justify-content: center
+}
+.nav-item.replay, .nav-item.forward{
+justify-content: end
+}
+
+.nav-item.replay, .nav-item.back{
+justify-content: start
+}
+
+.nav-item.forward > button, 
+.nav-item.back > button{
+  font-size:2rem
+}
+footer > button:first-child,  {
+  font-size:2rem
+}
+
+.nav-item > button{
+ font-size: 1.3rem
+}
+
+
+
+.menu-wrapper{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.menu-wrapper > button{
+margin-inline-end: 10px;
+margin-block-end: 10px
+}
+
+
+/* INPUTS  */
+
+input[type=text], select{
+  border: 1px solid #fff
+}
+
+input[type=text]{
+  min-width: 60%
+}
+
+
+textarea{
+  min-width: 60vw
+}
+
+.wordcontainer{
+  display:flex;
+  flex-direction: row;
+}
+
+.letter-item > input[type=text]{
+    min-width: 2em;
+  	max-width: 2em;
+  	margin-inline-end:10px;
+}
+
+.letter-item > .correct-letter{
+  min-width: 2em;
+  	max-width: 2em;
+  	margin-inline-end:10px;
+}
+
+.words{
+  display:flex;
+  flex-direction: row;
+}
+
+.word{
+  padding: 5px;
+}
+
+
+
+.spinning{
+
+  animation-name: spin;
+  animation-duration: 2000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; 
+  /* transform: rotate(3deg); */
+   /* transform: rotate(0.3rad);/ */
+   /* transform: rotate(3grad); */ 
+   /* transform: rotate(.03turn);  */
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+
+/* MAP */
+	.map{
+width: 100%;
+    height: 60vh;
+    border: 0;
+    margin: auto;
+    }
+
+
+.directions-card {
+    display: none!important
+}
+
+@media screen and (min-width: 450px) {
+.map{
+	max-width:60vw;
+	height:50vh;
+	border:0
+}
+}
+
+
+:: Story JavaScript [script]
+$('#ui-bar').remove();
+$(document.head).find('#style-ui-bar').remove();
+// TYPEWRITER FN
+!function() {
+    postrender.typewriter = function (b) {
+        if (this.tags) {
+            var r = new RegExp("t8n.typewriter.([0-9]+)(?:[^0-9]|$)","g");
+            var t = r.exec(this.tags.toString());
+            if (t) {
+                typeout(b, t[1]+0);
+            }
+        }
+        return b;
+    };
+    var typeout = function(c,t) {
+        var Furl = function(current) {
+            this.n = current;
+            this.out = false;
+            this.data = current.nodeValue;
+            current.nodeValue = "";
+            this.kids = [];
+            var cn = current.childNodes;
+            if (current.style && current.style.display=="none") {
+                return;
+            }
+            while (cn.length>0) {
+                var f = new Furl(cn[0]);
+                current.removeChild(cn[0]);
+                f.out = true;this.kids.push(f);
+            }
+        };
+        var nodes = new Furl(c);
+        var unfurl = function(furled,d) {
+            var n = furled.n;
+            if (furled.out) {
+                d.appendChild(n);
+                furled.out = false;
+            }
+            if (furled.data) {
+                n.nodeValue += furled.data[0];
+                furled.data = furled.data.slice(1);
+                return true;
+            }
+            for (var j=0; j<furled.kids.length; j++) {
+                var ret = unfurl(furled.kids[j],n);
+                if (ret) {
+                    return true;
+                }
+            }
+            return false;
+        };
+        var title = passage();
+        var intr = setInterval (
+            function() {
+                if (passage() == title && unfurl(nodes,null)) {
+                    return;
+                }
+                clearInterval(intr);
+            }
+        ,t);
+    };
+}();
+
+// MAKE MAP FUNCTION
+
+setup.generateDirectionsMap = function (latorg, longorg, latdest, longdest){
+const iFrame = document.createElement("iframe")
+iFrame.classList.add("map")
+iFrame.setAttribute("loading", "lazy")
+iFrame.setAttribute("referrerpolicy", "no-referrer-when-downgrade")
+// iFrame.setAttribute("allowfullscreen")
+iFrame.setAttribute("src", `https://www.google.com/maps/embed/v1/directions?key=AIzaSyBDRwRTMpSybNcmgkYVX1yZ0YmBbNhs9qU&center=${latorg},${longorg}&zoom=17&origin=${latorg},${longorg}&destination=${latdest},${longdest}&mode=walking`)
+const mount = document.getElementById("mapMount")
+return iFrame
+}
+
+//Get random 5 letter word
+
+setup.generate5LetterCode = () => {
+const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+let word = ""
+for (let i =0 ; i < 5 ; i++){
+word += alphabet[Math.round((alphabet.length-1)*Math.random())];
+}
+  return word;
+}
+
+//Check if an array contains multiple instances of an element
+
+setup.checkForRepeats = (array,element) => {
+ const arrayCopy = [...array];
+ const duplicates = arrayCopy.filter((item, index) => index !== arrayCopy.indexOf(item));
+ return duplicates.contains(element)
+}
+
+
+:: StoryInit {"position":"100,100","size":"100,100"}
+<<cacheaudio "badjoke" "https://youhavefoundconey.net/CG/what/assets/audio/badjoke.mp3">>
+<<waitforaudio>>
+
+
+:: header {"position":"100,225","size":"100,100"}
+<header>Special Delivery</header>
+
+
+:: footer {"position":"99,493","size":"100,100"}
+<footer>
+<div class="nav-item back"><<button "<">><<goto $prevpass>><</button>></div>
+<div class="nav-item"><<button "Replay">><<goto $passage>><</button>> </div>
+<div class="nav-item"><<button "Take me to the end">><<goto "lost">><</button>></div>
+<div class="nav-item forward"><<button ">">><<set $prevpass to $passage>><<goto $nextpassage>><</button>></div>
+</footer>
+
+:: footersimple {"position":"100,375","size":"100,100"}
+<footer><div class="nav-wrapper "><div class="nav-item"><<button "<">><<goto $prevpass>><</button>></div><div class="nav-item"><<button "Replay">><<goto $passage>><</button>> </div></div><div class="nav-wrapper"><div class="nav-item"><<button "Take me to the end">><<goto "lost">><</button>></div></div></footer>
+
+
+:: footerlost {"position":"100,375","size":"100,100"}
+<footer><div class="nav-wrapper "><div class="nav-item"><<button "Back">><<goto $prevpass>><</button>></div></div></footer>
+
+:: footerend {"position":"99,485","size":"100,100"}
+<footer>
+<div class="nav-item"><<button "Start again">><<goto "landing">><</button>></div>
+</footer>
+
+
+:: lost {"position":"710,53","size":"100,100"}
+<<set $passage to "lost">><<include "header">>
+<main>
+
+You have two options:
+
+<<button "Begin the adventure again">><<goto "landing">><</button>>
+
+<<button "Take me straight to the end location!">><<goto "end">><</button>>
+</main>
+<<include "footerlost">>
+
+
+:: landing {"position":"455,60","size":"100,100"}
+<<set $passage to "landing">>
+<<include "header">>
+<main>
+
+<<button "Start">><<set $prevpass to $passage>><<goto "SD-05">><</button>>
+     
+
+</main>
+<<include "footer">>
+
+
+:: end {"position":"97,615","size":"100,100"}
+<main>
+
+End
+
+</main>
+<<include "footerend">>
+
+
+:: footer2 {"position":"99,493","size":"100,100"}
+<footer>
+<div class="nav-item back"><<button "<">><<goto $prevpass>><</button>></div>
+<div class="nav-item"><<button "Replay">><<goto $passage>><</button>> </div>
+<div class="nav-item"><<button "Take me to the end">><<goto "lost">><</button>></div>
+<div class="nav-item forward"><<button ">">><<set $prevpass to $passage>><<goto $nextpassage>><</button>></div>
+</footer>
+
+
+:: SD-05 {"position":"454,195","size":"100,100"}
+<<set $passage to "SD-05">><<set $nextpassage to "SD-06">>
+<main>
+
+/*Sound effects*/
+
+Oh my gosh, I had my headphones on.
+Hi.
+I hope that doesn’t get stuck in your head. I know there’s another month of 2013, but I’m calling it now: song of the year.
+Normally I have my headphones on during the job, you see, it’s easy to get into flow.
+You’re here for the beta testing? You brought your bike. Good.
+I’ve been riding for Deliveroo for about..a month now?
+We just rolled out in the city. Apparently there’s thousands of new couriers but you’re my first mentee.
+
+I know, it can feel odd walking through the city with a bright blue jacket. At first, I was uncomfortable about drawing attention to myself, but then I realised there is a hidden benefit to a uniform in the City of London. People don’t question where I’m going. It’s like having a key to the city; I’m always walking with a purpose. Some people don’t even look at me. It’s weird: wearing a high-vis jacket can actually lower your visibility.
+I mean, even here? Everyone is wearing some kind of uniform?
+
+I’ll be honest there’s a bit of downtime on this job, just chilling around pick-up zones, waiting for instruction. Look around, you’ll see lots of my colleagues, well, other couriers. I don’t know if we’re technically colleagues. It’s a community but It’s hard to keep a conversation going when either one of you could get a notification any second telling you to run, go to a destination.
+
+There’s a polite smile, a nod of recognition that we are all part of the same industry. And it’s the next step in the industry of moving things from A to B, which has existed as long as there was A and B and things to move between them.
+My dad, he was a postman. I often think about our jobs, whether I’m following in his footsteps when my footsteps follow the app. You have time to think when you’re waiting. Space to wonder when you’re not wandering--
+
+/*DILON's phone bleeps*/
+
+And, 3, 2, 1, there’s my first job. It’s right here actually.
+
+<div class = "menu-wrapper">
+<<button "I'm helping solo">><<set $prevpass to $passage>><<goto "SD-06A">><</button>>
+
+<<button "I'm in a group">><<set $prevpass to $passage>><<goto "SD-06B">><</button>>
+ </div>
+
+</main>
+<<include "footer">>
+
+
+:: SD-06A {"position":"375,325","size":"100,100"}
+<<set $passage to "SD-06A">><<set $nextpassage to "SD-07">>
+<main>
+
+I can see on the app that I have a few bags in the same order. Looks like someone is having a party. I won’t be able to carry everything by myself.
+One of the bags is marked as fragile: good for someone responsible.
+One of these is very hot: good for someone tough.
+And one of the bags, I can see here, has been marked as heavy, really heavy, so that’s for someone really strong.
+I’m going to run in, but you decide which ones you want to carry? It will save time once we’re on the clock.
+
+
+<<button "Ok decided!">><<set $prevpass to $passage>><<goto "SD-07">><</button>>
+
+
+
+</main>
+<<include "footer">>
+
+
+:: SD-06B {"position":"525,325","size":"100,100"}
+<<set $passage to "SD-06B">><<set $nextpassage to "SD-07">>
+<main>
+
+I can see on the app that I have a few bags in the same order. Looks like someone is having a party. I won’t be able to carry everything by myself.
+One of the bags is marked as fragile: good for someone responsible.
+One of these is very hot: good for someone tough.
+And one of the bags, I can see here, has been marked as heavy, really heavy, so that’s for someone really strong.
+I’m going to run in, but you decide who carries which ones?
+
+<<button "Ok decided!">><<set $prevpass to $passage>><<goto "SD-07">><</button>>
+
+
+
+</main>
+<<include "footer">>
+
+
+:: SD-07 {"position":"450,450","size":"100,100"}
+<<set $passage to "SD-07">><<set $nextpassage to "SD-08">>
+<main>
+<<set $code1 to setup.generate5LetterCode()>>
+
+Here we are, here we are, here we are.
+We have to be speedy now; the customer is tracking our location.
+Thanks for taking some of these bags off my hand.
+I’m going to put the receipt back in the bag so we need to memorise the drop-off code for a speedy delivery.
+My dad used to have a trick when he was learning postcodes, he would make up a mnemonic story. I do the same with my pick-up codes. If it’s #SYFWDG that could be.. Spurs Yearn For Well Deserved Glory. #F7ARWOAR.. you could make the 7 an L and.. Feel Like a Room WithOut A Roof! Sorry, the song in my head.
+Anyway, here’s the code we have to remember:
+
+$code1
+
+Let me know when you’ve got it. Consign it to memory. I find the sillier the sentence, the easier it is for me to remember. Hold onto it because I’m going to put my phone back on navigation. I’ll need it in a moment.
+
+<<button "Okay, got it">><<set $prevpass to $passage>><<goto "SD-08">><</button>>
+
+
+     
+
+</main>
+<<include "footer2">>
+
+
+:: SD-08 {"position":"450,575","size":"100,100"}
+<<set $passage to "SD-08">><<set $nextpassage to "SD-09">>
+<main>
+
+$code1
+
+/*MAP NEEDED*/
+
+<<button "Here!">><<set $prevpass to $passage>><<goto "SD-09">><</button>>
+
+
+     
+
+</main>
+<<include "footer2">>
+
+
+:: SD-09 {"position":"450,700","size":"100,100"}
+<<set $passage to "SD-09">><<set $nextpassage to "SD-10">>
+<main>
+
+Thanks for your help so far, we’re about a third of the way there.
+You still remember the code?
+It can be hard navigating and walking at the same time. I spend hours looking down at my map. It’s important to check-in with your posture, shoulders back. Balance the weight of your bags between both arms.
+Sometimes I feel like I’m missing out by keeping my eyes on the prize. There’s an incredible skyline around here. But then again, I get to enter those buildings, no questions asked. I’ve delivered to the 20th floors, sometimes the 30th too. I’ve been down almost every alley, greeted most of the concierges, and almost every restaurant manager. The community makes me proud to be a Londoner. We help each other out.
+
+Help! Help!
+
+Oh. Are you hearing that too? Someone is crying for help? Hello!!
+
+Help! I need a hand. You look trustworthy. I just got off a horse, yes, quick. I need your help.
+
+You look like you’re from the literal 1600s?
+
+Duh, obviously. You don’t know what it’s like being a postboy.
+Or maybe you do. But it’s difficult work, especially in the City.
+Ever since they expanded the first Post Office, you know, round the corner? My postmaster has given me an almost unmanageable volume of deliveries. And it’s dangerous. I wish I could walk around undisturbed. Doing deliveries, I feel
+like there’s a big target on my back. You hear these stories of other postboys, the people who chase them for miles, attack them for loot.
+I think you have to be a certain type of criminal to rob someone for an envelope when you don’t even know what’s inside?
+Anyway, I need a hiding place around here. Somewhere discreet, just for a few minutes, somewhere I can blend in or hide from any passersby.
+These people have been chasing me for miles. I almost shook them off. They’re after my horse and my packages.
+I need a spot to hide both.
+
+You need to hide a horse?
+
+It’s not the craziest thing you’ll hear in The City. If you can’t help me, you can’t help me. But I’d always aid a colleague.
+
+We’re really in a rush. But my friend can look for a spot as we walk.
+
+Can you keep your eyes peeled for a good hiding spot? Somewhere near here? Let me know when you’ve found one.
+
+/*MAP NEEDED*/
+
+<<button "Got it!">><<set $prevpass to $passage>><<goto "SD-10">><</button>>
+
+
+     
+
+</main>
+<<include "footer2">>
+
+
+:: SD-10 {"position":"450,825","size":"100,100"}
+<<set $passage to "SD-10">><<set $nextpassage to "SD-11">>
+<main>
+
+/*MAP NEEDED*/
+Great, thanks for the help.
+
+
+<<button "Here">><<set $prevpass to $passage>><<goto "SD-11">><</button>>
+
+
+     
+
+</main>
+<<include "footer2">>
+
+
+:: SD-11 {"position":"450,950","size":"100,100"}
+<<set $passage to "SD-11">><<set $nextpassage to "SD-12">>
+<main>
+
+Thanks for that.
+We’re nearly there. Are you coping with the packages?
+It’s not often people stop and talk to me.
+If anyone could hide a horse in the City of London, I suppose it would be us.
+We find the nooks and crannies to rest our legs between jobs. And lots of people pretend not to see us anyway.
+
+We’re almost there
+
+Excuse me! Excuse me! You look like you can help. I’m in need of an outside eye.
+
+Hi.. We’re in a rush.
+
+I won’t be a minute. Just take a look at this.
+I’m sorry to disturb you. Honestly, my eyesight isn’t so great.
+I’ve been delivering in this city for so long that I almost know it like the back of my hand. Low vision, low visibility work, it’s all the same to me.
+The only issue is these silly 1840s stamps.
+
+1840s?
+
+Yeah, these stamps are an issue. They’re designed to be anti-forgery: red lines inserted in the woof paper, inside the stamp, and there were these blue lines on the outside. That’s not the issue; the issue is these new watermarks. They’re very elaborate but leave no room for the actual address. It’s fine for some of the buildings, especially in The City, you know? People write single names like Guildhall, the St Pauls of the world.
+
+The Gherkin, the Cheesegrater building.
+
+What? There’s a building for cheese graters and Gherkins?
+
+Ah. Timezone translations. Nevermind. I’m sorry, we’re really in a rush. My livelihood depends on speediness.
+
+I know. I just need a second. There are some names, supposedly around here, that I don’t recognise. Which is weird, ‘cos I’ve been on this patch for years. But people are writing concise descriptions alongside the postcode, and I can barely make out the handwriting, let alone the actual location.
+
+Okay, okay. We’ll help you quickly. I’ll read the words, and my friend can look around and point out the most sensible guess. Okay?
+
+That would be fantastic.
+
+Right, I’ll read these out and you take a second to point out which building sounds right. You ready?
+
+
+<<button "Yes">><<set $prevpass to $passage>><<goto "SD-12">><</button>>
+
+
+     
+
+</main>
+<<include "footer2">>
+
+
+:: SD-12 {"position":"450,1075","size":"100,100"}
+<<set $passage to "SD-12">><<set $nextpassage to "SD-13">>
+<main>
+
+This one says ‘intimidating entrance’.
+What could that possibly mean? Let me know when you have an idea.
+
+
+<<button "Got it">><<set $prevpass to $passage>><<goto "SD-13">><</button>>
+
+
+     
+
+</main>
+<<include "footer2">>
+
+
+:: SD-13 {"position":"450,1200","size":"100,100"}
+<<set $passage to "SD-13">><<set $nextpassage to "SD-14">>
+<main>
+
+Great. This next one says ‘loud and colourful’. I think?
+Where could that be?
+
+
+<<button "I have an idea">><<set $prevpass to $passage>><<goto "SD-14">><</button>>
+
+
+     
+
+</main>
+<<include "footer2">>
+
+
+:: SD-14 {"position":"450,1325","size":"100,100"}
+<<set $passage to "SD-14">><<set $nextpassage to "SD-15">>
+<main>
+
+And this one says. One sec, it’s tiny and cursive. This one says ‘the mouse box’.
+What on earth is that?
+
+<<button "I have a hunch">><<set $prevpass to $passage>><<goto "SD-15">><</button>>
+
+
+     
+
+</main>
+<<include "footer2">>
+
+
+:: SD-15 {"position":"450,1450","size":"100,100"}
+<<set $passage to "SD-15">><<set $nextpassage to "SD-16">>
+<main>
+
+And finally, this one says. ‘Artistic doorknob.’
+Can you look out for it in the next minute?
+
+I appreciate the help
+
+/*Dilon's phone bleeps*/
+
+/*MAP NEEDED*/
+
+No worries. We’ll keep our eyes peeled. But we need to run. I’ll keep my eyes on my map; you’ll look out for these destinations.
+
+<<button "Found it!">><<set $prevpass to $passage>><<goto "SD-16">><</button>>
+
+
+     
+
+</main>
+<<include "footer2">>
+
+
+:: SD-16 {"position":"450,1575","size":"100,100"}
+<<set $passage to "SD-16">><<set $nextpassage to "SD-17">>
+<main>
+
+Fantastic. Let’s keep moving.
+
+/*MAP NEEDED*/
+
+<<button "Here">><<set $prevpass to $passage>><<goto "SD-17">><</button>>
+
+
+     
+
+</main>
+<<include "footer2">>
+
+
+:: SD-17 {"position":"450,1700","size":"100,100"}
+<<set $passage to "SD-17">>
+<main>
+
+Deary me, the 1700s and 1840s: and I thought my job was tough.
+No more interruptions: we’re nearly here. It’s always best to arrive prepared. Let’s get ready to retrieve the right bags. What was the order number?
+
+<<textbox "$code1answer" "">>
+
+<<button "Enter">>
+	<<if $code1answer.toUpperCase() is $code1>>
+	<<set $prevpass to $passage>><<goto "SD-18A">>
+    <<else>>
+    <<set $prevpass to $passage>><<goto "SD-18B">>
+    <</if>>
+<</button>>
+
+
+     
+
+</main>
+<<include "footer">>
+
+
+:: SD-18A {"position":"375,1825","size":"100,100"}
+<<set $passage to "SD-18A">><<set $nextpassage to "SD-20">>
+<main>
+
+Cheers.
+
+Got it.
+
+<<timed 3s>><<set $prevpass to $passage>><<goto "SD-20">><</timed>>
+     
+
+</main>
+<<include "footer2">>
+
+
+:: SD-18B {"position":"525,1825","size":"100,100"}
+<<set $passage to "SD-16">>
+<main>
+
+<<set $wrongcode1 to setup.generate5LetterCode()>>
+<<set $wrongcode2 to setup.generate5LetterCode()>>
+
+It was one of these three:
+
+<<set $answers to [
+"<<button $code1>> <<set $prevpass to $passage>><<goto 'SD-19A'>><</button>>",
+"<<button $wrongcode1>> <<set $prevpass to $passage>><<goto 'SD-19B'>><</button>>",
+"<<button $wrongcode2>> <<set $prevpass to $passage>><<goto 'SD-19B'>><</button>>"
+]>>
+
+<<for _i to 0; _i = $answers.length; _i++>>
+	<<run $answer = $answers.pluck()>>
+    $answer
+<</for>>
+
+
+
+<div class = "codefeedback">
+</div>
+
+
+     
+
+</main>
+<<include "footer">>
+
+
+:: SD-19A {"position":"475,1950","size":"100,100"}
+<<set $passage to "SD-19A">><<set $nextpassage to "SD-20">>
+<main>
+
+There we go. Thanks so much.
+
+<<timed 3s>><<set $prevpass to $passage>><<goto "SD-20">><</timed>>
+     
+
+</main>
+<<include "footer2">>
+
+
+:: SD-19B {"position":"600,1950","size":"100,100"}
+<<set $passage to "SD-19B">><<set $nextpassage to "SD-20">>
+<main>
+
+Nevermind. I’ll ask the customer to remind me of their order. It might affect my tip or star rating, but that’s life. You’ll learn.
+
+<<timed 3s>><<set $prevpass to $passage>><<goto "SD-20">><</timed>>
+     
+
+</main>
+<<include "footer2">>
+
+
+:: SD-20 {"position":"450,2075","size":"100,100"}
+<<set $passage to "SD-20">><<set $nextpassage to "SD-21">>
+<main>
+
+Okay. Time to unload.
+I’ll get mine out. Give me a second.
+Ah! Deary me.
+Wait. Wait.
+It’s not my fault. It’s not your fault either.
+But it seems I still have one of Trish’s letters, from the 1840s.
+…
+I know what you’re thinking.Should we…
+I’m going to open it whilst you unpack.
+You remember what you’re carrying? We had heavy, fragile and very hot bags.
+Great. I’ll catch my breath before we walk to the door
+
+/*letter opening sound*/
+
+You’ll never believe this. Look at this letter. I’ll read it out
+
+<<timed 3s>><<set $prevpass to $passage>><<goto "SD-21">><</timed>>
+
+
+     
+
+</main>
+<<include "footer2">>
+
+
+:: SD-21 {"position":"450,2200","size":"100,100"}
+<<set $passage to "SD-21">><<set $nextpassage to "SD-22">>
+<main>
+
+/*Need an old typefacey font for this letter*/
+
+1844 LETTER TO THE EDITOR
+Sir, With a view to abridge the labour of the letter carriers, and so save public time, allow me to suggest,
+
+1st. That a recommendation be issued from the Post Office that a letter-box with open mouth be fixed in every door, into which the letter carrier may slip all letters and newspapers with which he may be charged for each house, continuing to knock or ring, as at present, in case of no payment being required; in which case, having rung so as to warn the inmates of his call he may save much time, by passing to the next house, without waiting for the answer to his summons.
+
+2dly. In the event of there being any packet requiring payment, let him give, after the usual two knocks, a third and loud one, or an extra pull at the bell.
+
+This will sufficiently advertise the people in the house that matters of unusual urgency require their attention at the hall-door.
+
+I remain, sir, your very obedient servant, D
+
+
+<<timed 3s>><<set $prevpass to $passage>><<goto "SD-22">><</timed>>
+
+
+     
+
+</main>
+<<include "footer2">>
+
+
+:: SD-22 {"position":"450,2325","size":"100,100"}
+<<set $passage to "SD-21">><<set $nextpassage to "end">>
+<main>
+
+
+I suppose it must be for someone near here. This square mile has been the center of
+the post system since its conception. I imagine our service will expand from here too.
+
+But that’s crazy. In many ways, we are human postboxes, aren’t we? How many
+postboxes did you see in the city today? I wonder what they will look like in the
+future.
+
+But I’m not being paid to wonder. I’m being paid to deliver.
+
+/*Dilon’s phone rings.*/
+
+And if I want any additional payment in tips, we need to make this handover smooth
+and polite.
+
+We’re nearly there. I’m going to go for two knocks, a third and loud one.
+
+One, two, three.
+
+/*The sound of two knocks, a third and loud one.*/
+
+Can you say the code out loud?
+
+/*The sound of a door swinging open.*/
+
+Cheers.
+
+/*Door slams shut*/
+
+That was simple. No messing around.
+I need to head to my next delivery. I’m sure I’ll see you in the city.
+Thanks for your help today! I don’t think I’ll ever forget it.
+You’ve been five stars.
+
+<<timed 3s>><<set $prevpass to $passage>><<goto "end">><</timed>>
+
+
+
+</main>
+<<include "footer2">>
+
+

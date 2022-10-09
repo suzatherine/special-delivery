@@ -98,7 +98,7 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<tw-storydata name="Special Delivery" startnode="5" creator="Twine" creator-version="2.5.1" format="SugarCube" format-version="2.36.1" ifid="bec9a08e-b200-4353-b33e-3bb0fb14ba91" options="" tags="" zoom="0.6" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap");
+	<!-- UUID://BEC9A08E-B200-4353-B33E-3BB0FB14BA91// --><tw-storydata name="Special Delivery" startnode="8" creator="Tweego" creator-version="2.1.1+81d1d71" ifid="BEC9A08E-B200-4353-B33E-3BB0FB14BA91" zoom="0.6" format="SugarCube" format-version="2.36.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap");
 
 /* GENERICS */
 html {
@@ -245,17 +245,17 @@ button{
 }
 
 button:hover{
-	background-color:#cf1b98;
+	background-color:#ea9e25;
 	border: #fff 1px solid;
 	color: #fff;
 }
 
 a {
-  color: #f2647d;
+  color:#ea9e25;;
 }
 
 a:active {
-  background-color: #f2647d;
+  background-color: #ea9e25;;
 }
 
 a:hover {
@@ -272,10 +272,13 @@ a:hover {
 
 /* GENERAL STYLES */
 body{
-  font-size: 1.6rem;
+  font-size: 1.8rem;
+  font-weight: 600;
   font-family: "Space Grotesk";
+  color:#fff;
+  /* color:#000; */
   overflow:scroll;
-  background:#000;
+  background:#188081;
   /* padding: 1.5rem */
   display:flex;
   flex-direction: column
@@ -290,18 +293,24 @@ header{
 
 main{
    padding: 2rem;
-   margin-block-end: 4rem
+  margin-block-end: 10rem
 }
+
+h2.title{
+  font-size:2.5rem
+}
+
+/* FOOTER  */
 
 footer{
    display:flex;
   justify-content: space-between;
-  align-items: flex-end; 
+align-items: end;
   position:fixed;
   bottom: 0;
   padding: 2rem;
   width: 100%;
-  background-color: #000
+background: #188081;
 }
 
 nav{
@@ -320,18 +329,35 @@ align-items: flex-end
 }
 
 .nav-item{
-  margin-block-end: 1.5rem
+  margin-block-end: 0.5rem;
+  width:100%;
+  display:flex
 }
 
-.nav-item:last-child{
-  margin-block-end: 0
+.nav-item.replay, .nav-item.end{
+justify-content: center
+}
+.nav-item.replay, .nav-item.forward{
+justify-content: end
+}
+
+.nav-item.replay, .nav-item.back{
+justify-content: start
+}
+
+.nav-item.forward > button, 
+.nav-item.back > button{
+  font-size:2rem
+}
+footer > button:first-child,  {
+  font-size:2rem
+}
+
+.nav-item > button{
+ font-size: 1.3rem
 }
 
 
-.nav-wrapper:last-child{
-display:flex;
-align-items: flex-end
-}
 
 .menu-wrapper{
   display: flex;
@@ -345,26 +371,17 @@ margin-inline-end: 10px;
 margin-block-end: 10px
 }
 
-.door-container{
-  display:flex;
-  flex-direction: row;
-justify-content: space-around;
-  align-items:center;
-  text-align: right;
+
+/* INPUTS  */
+
+input[type=text], select{
+  border: 1px solid #fff
 }
 
-.door-item{
-  display:flex;
-  flex-direction:column
+input[type=text]{
+  min-width: 60%
 }
 
-.door-item > button > img {
-  max-width: 7rem
-}
-
-.door-item > span {
-  text-align: center
-}
 
 textarea{
   min-width: 60vw
@@ -396,9 +413,7 @@ textarea{
   padding: 5px;
 }
 
-.detector{
- width: 50%;
-}
+
 
 .spinning{
 
@@ -535,19 +550,23 @@ setup.checkForRepeats = (array,element) => {
  const duplicates = arrayCopy.filter((item, index) => index !== arrayCopy.indexOf(item));
  return duplicates.contains(element)
 }</script><tw-passagedata pid="1" name="StoryInit" tags="" position="100,100" size="100,100">&lt;&lt;cacheaudio &quot;badjoke&quot; &quot;https://youhavefoundconey.net/CG/what/assets/audio/badjoke.mp3&quot;&gt;&gt;
-&lt;&lt;waitforaudio&gt;&gt;
-
-</tw-passagedata><tw-passagedata pid="2" name="header" tags="" position="100,225" size="100,100">&lt;header&gt;Adventure Functionality /
- Structure Template&lt;/header&gt;</tw-passagedata><tw-passagedata pid="3" name="footer" tags="" position="100,375" size="100,100">&lt;footer&gt;&lt;div class=&quot;nav-wrapper &quot;&gt;&lt;div class=&quot;nav-item&quot;&gt;&lt;&lt;button &quot;Replay&quot;&gt;&gt;&lt;&lt;goto $passage&gt;&gt;&lt;&lt;/button&gt;&gt; &lt;/div&gt;&lt;div class=&quot;nav-item&quot;&gt;&lt;&lt;button &quot;Back&quot;&gt;&gt;&lt;&lt;goto $prevpass&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;nav-wrapper&quot;&gt;&lt;div class=&quot;nav-item&quot;&gt;&lt;&lt;button &quot;I&#39;m lost&quot;&gt;&gt;&lt;&lt;goto &quot;lost&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/footer&gt;</tw-passagedata><tw-passagedata pid="4" name="lost" tags="" position="710,53" size="100,100">&lt;&lt;set $passage to &quot;lost&quot;&gt;&gt;&lt;&lt;include &quot;header&quot;&gt;&gt;
+&lt;&lt;waitforaudio&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="header" tags="" position="100,225" size="100,100">&lt;header&gt;Special Delivery&lt;/header&gt;</tw-passagedata><tw-passagedata pid="3" name="footer" tags="" position="99,493" size="100,100">&lt;footer&gt;
+&lt;div class=&quot;nav-item back&quot;&gt;&lt;&lt;button &quot;&lt;&quot;&gt;&gt;&lt;&lt;goto $prevpass&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/div&gt;
+&lt;div class=&quot;nav-item&quot;&gt;&lt;&lt;button &quot;Replay&quot;&gt;&gt;&lt;&lt;goto $passage&gt;&gt;&lt;&lt;/button&gt;&gt; &lt;/div&gt;
+&lt;div class=&quot;nav-item&quot;&gt;&lt;&lt;button &quot;Take me to the end&quot;&gt;&gt;&lt;&lt;goto &quot;lost&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/div&gt;
+&lt;div class=&quot;nav-item forward&quot;&gt;&lt;&lt;button &quot;&gt;&quot;&gt;&gt;&lt;&lt;set $prevpass to $passage&gt;&gt;&lt;&lt;goto $nextpassage&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/div&gt;
+&lt;/footer&gt;</tw-passagedata><tw-passagedata pid="4" name="footersimple" tags="" position="100,375" size="100,100">&lt;footer&gt;&lt;div class=&quot;nav-wrapper &quot;&gt;&lt;div class=&quot;nav-item&quot;&gt;&lt;&lt;button &quot;&lt;&quot;&gt;&gt;&lt;&lt;goto $prevpass&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/div&gt;&lt;div class=&quot;nav-item&quot;&gt;&lt;&lt;button &quot;Replay&quot;&gt;&gt;&lt;&lt;goto $passage&gt;&gt;&lt;&lt;/button&gt;&gt; &lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;nav-wrapper&quot;&gt;&lt;div class=&quot;nav-item&quot;&gt;&lt;&lt;button &quot;Take me to the end&quot;&gt;&gt;&lt;&lt;goto &quot;lost&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/footer&gt;</tw-passagedata><tw-passagedata pid="5" name="footerlost" tags="" position="100,375" size="100,100">&lt;footer&gt;&lt;div class=&quot;nav-wrapper &quot;&gt;&lt;div class=&quot;nav-item&quot;&gt;&lt;&lt;button &quot;Back&quot;&gt;&gt;&lt;&lt;goto $prevpass&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/footer&gt;</tw-passagedata><tw-passagedata pid="6" name="footerend" tags="" position="99,485" size="100,100">&lt;footer&gt;
+&lt;div class=&quot;nav-item&quot;&gt;&lt;&lt;button &quot;Start again&quot;&gt;&gt;&lt;&lt;goto &quot;landing&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/div&gt;
+&lt;/footer&gt;</tw-passagedata><tw-passagedata pid="7" name="lost" tags="" position="710,53" size="100,100">&lt;&lt;set $passage to &quot;lost&quot;&gt;&gt;&lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main&gt;
-Sorry to hear that you&#39;re lost! 
+
 You have two options:
 
 &lt;&lt;button &quot;Begin the adventure again&quot;&gt;&gt;&lt;&lt;goto &quot;landing&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 
 &lt;&lt;button &quot;Take me straight to the end location!&quot;&gt;&gt;&lt;&lt;goto &quot;end&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="landing" tags="" position="455,60" size="100,100">&lt;&lt;set $passage to &quot;landing&quot;&gt;&gt;
+&lt;&lt;include &quot;footerlost&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="8" name="landing" tags="" position="455,60" size="100,100">&lt;&lt;set $passage to &quot;landing&quot;&gt;&gt;
 &lt;&lt;include &quot;header&quot;&gt;&gt;
 &lt;main&gt;
 
@@ -555,16 +574,17 @@ You have two options:
      
 
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="6" name="end" tags="" position="97,615" size="100,100">&lt;main&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="end" tags="" position="97,615" size="100,100">&lt;main&gt;
 
 End
 
-&lt;/main&gt;</tw-passagedata><tw-passagedata pid="7" name="footer2" tags="" position="99,493" size="100,100">&lt;footer&gt;
+&lt;/main&gt;
+&lt;&lt;include &quot;footerend&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="10" name="footer2" tags="" position="99,493" size="100,100">&lt;footer&gt;
 &lt;div class=&quot;nav-item back&quot;&gt;&lt;&lt;button &quot;&lt;&quot;&gt;&gt;&lt;&lt;goto $prevpass&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/div&gt;
 &lt;div class=&quot;nav-item&quot;&gt;&lt;&lt;button &quot;Replay&quot;&gt;&gt;&lt;&lt;goto $passage&gt;&gt;&lt;&lt;/button&gt;&gt; &lt;/div&gt;
 &lt;div class=&quot;nav-item&quot;&gt;&lt;&lt;button &quot;Take me to the end&quot;&gt;&gt;&lt;&lt;goto &quot;lost&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/div&gt;
 &lt;div class=&quot;nav-item forward&quot;&gt;&lt;&lt;button &quot;&gt;&quot;&gt;&gt;&lt;&lt;set $prevpass to $passage&gt;&gt;&lt;&lt;goto $nextpassage&gt;&gt;&lt;&lt;/button&gt;&gt;&lt;/div&gt;
-&lt;/footer&gt;</tw-passagedata><tw-passagedata pid="8" name="SD-05" tags="" position="454,195" size="100,100">&lt;&lt;set $passage to &quot;SD-05&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-06&quot;&gt;&gt;
+&lt;/footer&gt;</tw-passagedata><tw-passagedata pid="11" name="SD-05" tags="" position="454,195" size="100,100">&lt;&lt;set $passage to &quot;SD-05&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-06&quot;&gt;&gt;
 &lt;main&gt;
 
 /*Sound effects*/
@@ -596,7 +616,7 @@ And, 3, 2, 1, there’s my first job. It’s right here actually.
  &lt;/div&gt;
 
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="9" name="SD-06A" tags="" position="375,325" size="100,100">&lt;&lt;set $passage to &quot;SD-06A&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-07&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="SD-06A" tags="" position="375,325" size="100,100">&lt;&lt;set $passage to &quot;SD-06A&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-07&quot;&gt;&gt;
 &lt;main&gt;
 
 I can see on the app that I have a few bags in the same order. Looks like someone is having a party. I won’t be able to carry everything by myself.
@@ -611,7 +631,7 @@ I’m going to run in, but you decide which ones you want to carry? It will save
 
 
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="10" name="SD-06B" tags="" position="525,325" size="100,100">&lt;&lt;set $passage to &quot;SD-06B&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-07&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="SD-06B" tags="" position="525,325" size="100,100">&lt;&lt;set $passage to &quot;SD-06B&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-07&quot;&gt;&gt;
 &lt;main&gt;
 
 I can see on the app that I have a few bags in the same order. Looks like someone is having a party. I won’t be able to carry everything by myself.
@@ -625,7 +645,7 @@ I’m going to run in, but you decide who carries which ones?
 
 
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="SD-07" tags="" position="450,450" size="100,100">&lt;&lt;set $passage to &quot;SD-07&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-08&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="SD-07" tags="" position="450,450" size="100,100">&lt;&lt;set $passage to &quot;SD-07&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-08&quot;&gt;&gt;
 &lt;main&gt;
 &lt;&lt;set $code1 to setup.generate5LetterCode()&gt;&gt;
 
@@ -646,7 +666,7 @@ Let me know when you’ve got it. Consign it to memory. I find the sillier the s
      
 
 &lt;/main&gt;
-&lt;&lt;include &quot;footer2&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="SD-08" tags="" position="450,575" size="100,100">&lt;&lt;set $passage to &quot;SD-08&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-09&quot;&gt;&gt;
+&lt;&lt;include &quot;footer2&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="SD-08" tags="" position="450,575" size="100,100">&lt;&lt;set $passage to &quot;SD-08&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-09&quot;&gt;&gt;
 &lt;main&gt;
 
 $code1
@@ -659,7 +679,7 @@ $code1
      
 
 &lt;/main&gt;
-&lt;&lt;include &quot;footer2&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="13" name="SD-09" tags="" position="450,700" size="100,100">&lt;&lt;set $passage to &quot;SD-09&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-10&quot;&gt;&gt;
+&lt;&lt;include &quot;footer2&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="SD-09" tags="" position="450,700" size="100,100">&lt;&lt;set $passage to &quot;SD-09&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-10&quot;&gt;&gt;
 &lt;main&gt;
 
 Thanks for your help so far, we’re about a third of the way there.
@@ -700,7 +720,7 @@ Can you keep your eyes peeled for a good hiding spot? Somewhere near here? Let m
      
 
 &lt;/main&gt;
-&lt;&lt;include &quot;footer2&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="14" name="SD-10" tags="" position="450,825" size="100,100">&lt;&lt;set $passage to &quot;SD-10&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-11&quot;&gt;&gt;
+&lt;&lt;include &quot;footer2&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="SD-10" tags="" position="450,825" size="100,100">&lt;&lt;set $passage to &quot;SD-10&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-11&quot;&gt;&gt;
 &lt;main&gt;
 
 /*MAP NEEDED*/
@@ -713,7 +733,7 @@ Great, thanks for the help.
      
 
 &lt;/main&gt;
-&lt;&lt;include &quot;footer2&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="15" name="SD-11" tags="" position="450,950" size="100,100">&lt;&lt;set $passage to &quot;SD-11&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-12&quot;&gt;&gt;
+&lt;&lt;include &quot;footer2&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="SD-11" tags="" position="450,950" size="100,100">&lt;&lt;set $passage to &quot;SD-11&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-12&quot;&gt;&gt;
 &lt;main&gt;
 
 Thanks for that.
@@ -758,7 +778,7 @@ Right, I’ll read these out and you take a second to point out which building s
      
 
 &lt;/main&gt;
-&lt;&lt;include &quot;footer2&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="16" name="SD-12" tags="" position="450,1075" size="100,100">&lt;&lt;set $passage to &quot;SD-12&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-13&quot;&gt;&gt;
+&lt;&lt;include &quot;footer2&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="SD-12" tags="" position="450,1075" size="100,100">&lt;&lt;set $passage to &quot;SD-12&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-13&quot;&gt;&gt;
 &lt;main&gt;
 
 This one says ‘intimidating entrance’.
@@ -771,7 +791,7 @@ What could that possibly mean? Let me know when you have an idea.
      
 
 &lt;/main&gt;
-&lt;&lt;include &quot;footer2&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="17" name="SD-13" tags="" position="450,1200" size="100,100">&lt;&lt;set $passage to &quot;SD-13&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-14&quot;&gt;&gt;
+&lt;&lt;include &quot;footer2&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="SD-13" tags="" position="450,1200" size="100,100">&lt;&lt;set $passage to &quot;SD-13&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-14&quot;&gt;&gt;
 &lt;main&gt;
 
 Great. This next one says ‘loud and colourful’. I think?
@@ -784,7 +804,7 @@ Where could that be?
      
 
 &lt;/main&gt;
-&lt;&lt;include &quot;footer2&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="SD-14" tags="" position="450,1325" size="100,100">&lt;&lt;set $passage to &quot;SD-14&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-15&quot;&gt;&gt;
+&lt;&lt;include &quot;footer2&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="21" name="SD-14" tags="" position="450,1325" size="100,100">&lt;&lt;set $passage to &quot;SD-14&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-15&quot;&gt;&gt;
 &lt;main&gt;
 
 And this one says. One sec, it’s tiny and cursive. This one says ‘the mouse box’.
@@ -796,7 +816,7 @@ What on earth is that?
      
 
 &lt;/main&gt;
-&lt;&lt;include &quot;footer2&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="SD-15" tags="" position="450,1450" size="100,100">&lt;&lt;set $passage to &quot;SD-15&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-16&quot;&gt;&gt;
+&lt;&lt;include &quot;footer2&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="SD-15" tags="" position="450,1450" size="100,100">&lt;&lt;set $passage to &quot;SD-15&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-16&quot;&gt;&gt;
 &lt;main&gt;
 
 And finally, this one says. ‘Artistic doorknob.’
@@ -816,7 +836,7 @@ No worries. We’ll keep our eyes peeled. But we need to run. I’ll keep my eye
      
 
 &lt;/main&gt;
-&lt;&lt;include &quot;footer2&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="SD-16" tags="" position="450,1575" size="100,100">&lt;&lt;set $passage to &quot;SD-16&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-17&quot;&gt;&gt;
+&lt;&lt;include &quot;footer2&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="SD-16" tags="" position="450,1575" size="100,100">&lt;&lt;set $passage to &quot;SD-16&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-17&quot;&gt;&gt;
 &lt;main&gt;
 
 Fantastic. Let’s keep moving.
@@ -829,7 +849,7 @@ Fantastic. Let’s keep moving.
      
 
 &lt;/main&gt;
-&lt;&lt;include &quot;footer2&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="21" name="SD-17" tags="" position="450,1700" size="100,100">&lt;&lt;set $passage to &quot;SD-17&quot;&gt;&gt;
+&lt;&lt;include &quot;footer2&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="24" name="SD-17" tags="" position="450,1700" size="100,100">&lt;&lt;set $passage to &quot;SD-17&quot;&gt;&gt;
 &lt;main&gt;
 
 Deary me, the 1700s and 1840s: and I thought my job was tough.
@@ -849,7 +869,7 @@ No more interruptions: we’re nearly here. It’s always best to arrive prepare
      
 
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="SD-18A" tags="" position="375,1825" size="100,100">&lt;&lt;set $passage to &quot;SD-18A&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-20&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="SD-18A" tags="" position="375,1825" size="100,100">&lt;&lt;set $passage to &quot;SD-18A&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-20&quot;&gt;&gt;
 &lt;main&gt;
 
 Cheers.
@@ -860,7 +880,7 @@ Got it.
      
 
 &lt;/main&gt;
-&lt;&lt;include &quot;footer2&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="SD-18B" tags="" position="525,1825" size="100,100">&lt;&lt;set $passage to &quot;SD-16&quot;&gt;&gt;
+&lt;&lt;include &quot;footer2&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="26" name="SD-18B" tags="" position="525,1825" size="100,100">&lt;&lt;set $passage to &quot;SD-16&quot;&gt;&gt;
 &lt;main&gt;
 
 &lt;&lt;set $wrongcode1 to setup.generate5LetterCode()&gt;&gt;
@@ -888,7 +908,7 @@ It was one of these three:
      
 
 &lt;/main&gt;
-&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="24" name="SD-19A" tags="" position="475,1950" size="100,100">&lt;&lt;set $passage to &quot;SD-19A&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-20&quot;&gt;&gt;
+&lt;&lt;include &quot;footer&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="27" name="SD-19A" tags="" position="475,1950" size="100,100">&lt;&lt;set $passage to &quot;SD-19A&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-20&quot;&gt;&gt;
 &lt;main&gt;
 
 There we go. Thanks so much.
@@ -897,7 +917,7 @@ There we go. Thanks so much.
      
 
 &lt;/main&gt;
-&lt;&lt;include &quot;footer2&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="SD-19B" tags="" position="600,1950" size="100,100">&lt;&lt;set $passage to &quot;SD-19B&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-20&quot;&gt;&gt;
+&lt;&lt;include &quot;footer2&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="SD-19B" tags="" position="600,1950" size="100,100">&lt;&lt;set $passage to &quot;SD-19B&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-20&quot;&gt;&gt;
 &lt;main&gt;
 
 Nevermind. I’ll ask the customer to remind me of their order. It might affect my tip or star rating, but that’s life. You’ll learn.
@@ -906,7 +926,7 @@ Nevermind. I’ll ask the customer to remind me of their order. It might affect 
      
 
 &lt;/main&gt;
-&lt;&lt;include &quot;footer2&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="26" name="SD-20" tags="" position="450,2075" size="100,100">&lt;&lt;set $passage to &quot;SD-20&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-21&quot;&gt;&gt;
+&lt;&lt;include &quot;footer2&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="29" name="SD-20" tags="" position="450,2075" size="100,100">&lt;&lt;set $passage to &quot;SD-20&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-21&quot;&gt;&gt;
 &lt;main&gt;
 
 Okay. Time to unload.
@@ -931,7 +951,7 @@ You’ll never believe this. Look at this letter. I’ll read it out
      
 
 &lt;/main&gt;
-&lt;&lt;include &quot;footer2&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="27" name="SD-21" tags="" position="450,2200" size="100,100">&lt;&lt;set $passage to &quot;SD-21&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-22&quot;&gt;&gt;
+&lt;&lt;include &quot;footer2&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="30" name="SD-21" tags="" position="450,2200" size="100,100">&lt;&lt;set $passage to &quot;SD-21&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;SD-22&quot;&gt;&gt;
 &lt;main&gt;
 
 /*Need an old typefacey font for this letter*/
@@ -954,7 +974,7 @@ I remain, sir, your very obedient servant, D
      
 
 &lt;/main&gt;
-&lt;&lt;include &quot;footer2&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="28" name="SD-22" tags="" position="450,2325" size="100,100">&lt;&lt;set $passage to &quot;SD-21&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;end&quot;&gt;&gt;
+&lt;&lt;include &quot;footer2&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="31" name="SD-22" tags="" position="450,2325" size="100,100">&lt;&lt;set $passage to &quot;SD-21&quot;&gt;&gt;&lt;&lt;set $nextpassage to &quot;end&quot;&gt;&gt;
 &lt;main&gt;
 
 
