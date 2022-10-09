@@ -14,6 +14,7 @@ Special Delivery
 
 :: Story Stylesheet [stylesheet]
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
 
 /* GENERICS */
 html {
@@ -373,6 +374,27 @@ width: 100%;
 }
 }
 
+/* SPECIFICS */
+.code-wrapper{
+  border: 1px solid #fff;
+  padding: 10px;
+    width: fit-content;
+    border-radius: 5px;
+
+}
+
+h2.code{
+  width: fit-content;
+  margin-bottom: 0;
+  font-size: 2.5rem;
+  display:inline
+}
+
+.cursive{
+font-family: 'Dancing Script', cursive;
+  font-size: 3rem
+}
+
 
 :: Story JavaScript [script]
 $('#ui-bar').remove();
@@ -440,16 +462,35 @@ $(document.head).find('#style-ui-bar').remove();
 
 // MAKE MAP FUNCTION
 
-setup.generateDirectionsMap = function (latorg, longorg, latdest, longdest){
+setup.generateDirectionsMap = function (origin, dest){
 const iFrame = document.createElement("iframe")
 iFrame.classList.add("map")
 iFrame.setAttribute("loading", "lazy")
 iFrame.setAttribute("referrerpolicy", "no-referrer-when-downgrade")
 // iFrame.setAttribute("allowfullscreen")
-iFrame.setAttribute("src", `https://www.google.com/maps/embed/v1/directions?key=AIzaSyBDRwRTMpSybNcmgkYVX1yZ0YmBbNhs9qU&center=${latorg},${longorg}&zoom=17&origin=${latorg},${longorg}&destination=${latdest},${longdest}&mode=walking`)
+iFrame.setAttribute("src", `https://www.google.com/maps/embed/v1/directions?key=AIzaSyBDRwRTMpSybNcmgkYVX1yZ0YmBbNhs9qU&center=${origin[0]},${origin[1]}&zoom=18&origin=${origin[0]},${origin[1]}&destination=${dest[0]},${dest[1]}&mode=walking`)
 const mount = document.getElementById("mapMount")
+console.log(iFrame)
 return iFrame
+// this.mapMount.appendChild(iFrame)
 }
+
+// MAKE MAP WITH WAYPOINTS FUNCTION
+
+setup.generateDirectionsMapWP = function (origin, dest, wayp){
+const iFrame = document.createElement("iframe")
+iFrame.classList.add("map")
+iFrame.setAttribute("loading", "lazy")
+iFrame.setAttribute("referrerpolicy", "no-referrer-when-downgrade")
+// iFrame.setAttribute("allowfullscreen")
+iFrame.setAttribute("src", `https://www.google.com/maps/embed/v1/directions?key=AIzaSyBDRwRTMpSybNcmgkYVX1yZ0YmBbNhs9qU&center=${origin[0]},${origin[1]}&zoom=18&origin=${origin[0]},${origin[1]}&destination=${dest[0]},${dest[1]}&waypoints=${wayp}&mode=walking`)
+const mount = document.getElementById("mapMount")
+console.log(iFrame)
+return iFrame
+// this.mapMount.appendChild(iFrame)
+}
+
+// <<set $map = setup.generateDirectionsMap([], [])>>
 
 //Get random 5 letter word
 
@@ -472,7 +513,32 @@ setup.checkForRepeats = (array,element) => {
 
 
 :: StoryInit {"position":"100,100","size":"100,100"}
-<<cacheaudio "badjoke" "https://youhavefoundconey.net/CG/what/assets/audio/badjoke.mp3">>
+<<cacheaudio "SD_05" "https://www.youhavefoundconey.net/tgksnd/SD/SD_05.mp3">>
+<<cacheaudio "SD_06" "https://www.youhavefoundconey.net/tgksnd/SD/SD_06.mp3">>
+<<cacheaudio "SD_06A" "https://www.youhavefoundconey.net/tgksnd/SD/SD_06A.mp3">>
+<<cacheaudio "SD_06B" "https://www.youhavefoundconey.net/tgksnd/SD/SD_06B.mp3">>
+<<cacheaudio "SD_07" "https://www.youhavefoundconey.net/tgksnd/SD/SD_07.mp3">>
+<<cacheaudio "SD_09" "https://www.youhavefoundconey.net/tgksnd/SD/SD_09.mp3">>
+
+<<cacheaudio "SD_10" "https://www.youhavefoundconey.net/tgksnd/SD/SD_10.mp3">>
+<<cacheaudio "SD_11" "https://www.youhavefoundconey.net/tgksnd/SD/SD_11.mp3">>
+
+<<cacheaudio "SD_12" "https://www.youhavefoundconey.net/tgksnd/SD/SD_12.mp3">>
+<<cacheaudio "SD_13" "https://www.youhavefoundconey.net/tgksnd/SD/SD_13.mp3">>
+<<cacheaudio "SD_14" "https://www.youhavefoundconey.net/tgksnd/SD/SD_14.mp3">>
+<<cacheaudio "SD_15" "https://www.youhavefoundconey.net/tgksnd/SD/SD_15.mp3">>
+<<cacheaudio "SD_16" "https://www.youhavefoundconey.net/tgksnd/SD/SD_16.mp3">>
+
+<<cacheaudio "SD_17" "https://www.youhavefoundconey.net/tgksnd/SD/SD_17.mp3">>
+<<cacheaudio "SD_18B" "https://www.youhavefoundconey.net/tgksnd/SD/SD_18B.mp3">>
+<<cacheaudio "SD_18A" "https://www.youhavefoundconey.net/tgksnd/SD/SD_18A.mp3">>
+<<cacheaudio "SD_19A" "https://www.youhavefoundconey.net/tgksnd/SD/SD_19A.mp3">>
+
+<<cacheaudio "SD_19B" "https://www.youhavefoundconey.net/tgksnd/SD/SD_19B.mp3">>
+<<cacheaudio "SD_20" "https://www.youhavefoundconey.net/tgksnd/SD/SD_20.mp3">>
+<<cacheaudio "SD_21" "https://www.youhavefoundconey.net/tgksnd/SD/SD_21.mp3">>
+<<cacheaudio "SD_22" "https://www.youhavefoundconey.net/tgksnd/SD/SD_22.mp3">>
+
 <<waitforaudio>>
 
 
@@ -502,7 +568,7 @@ setup.checkForRepeats = (array,element) => {
 
 
 :: lost {"position":"710,53","size":"100,100"}
-<<set $passage to "lost">><<include "header">>
+<<set $passage to "lost">>
 <main>
 
 You have two options:
@@ -516,40 +582,33 @@ You have two options:
 
 :: landing {"position":"455,60","size":"100,100"}
 <<set $passage to "landing">>
-<<include "header">>
+
 <main>
 
 <<button "Start">><<set $prevpass to $passage>><<goto "SD-05">><</button>>
      
 
 </main>
-<<include "footer">>
+
 
 
 :: end {"position":"97,615","size":"100,100"}
+<<audio ":all" stop>><<set $endMap = setup.generateDirectionsMap([], [])>>
 <main>
 
 End
-
+$endMap
 </main>
 <<include "footerend">>
 
 
-:: footer2 {"position":"99,493","size":"100,100"}
-<footer>
-<div class="nav-item back"><<button "<">><<goto $prevpass>><</button>></div>
-<div class="nav-item"><<button "Replay">><<goto $passage>><</button>> </div>
-<div class="nav-item"><<button "Take me to the end">><<goto "lost">><</button>></div>
-<div class="nav-item forward"><<button ">">><<set $prevpass to $passage>><<goto $nextpassage>><</button>></div>
-</footer>
+
 
 
 :: SD-05 {"position":"454,195","size":"100,100"}
-<<set $passage to "SD-05">><<set $nextpassage to "SD-06">>
+<<set $passage to "SD-05">><<audio ":all" stop>><<audio "SD_05" play>>
 <main>
-
-/*Sound effects*/
-
+<div id="mount"></div>
 Oh my gosh, I had my headphones on.
 Hi.
 I hope that doesn’t get stuck in your head. I know there’s another month of 2013, but I’m calling it now: song of the year.
@@ -566,7 +625,6 @@ I’ll be honest there’s a bit of downtime on this job, just chilling around p
 There’s a polite smile, a nod of recognition that we are all part of the same industry. And it’s the next step in the industry of moving things from A to B, which has existed as long as there was A and B and things to move between them.
 My dad, he was a postman. I often think about our jobs, whether I’m following in his footsteps when my footsteps follow the app. You have time to think when you’re waiting. Space to wonder when you’re not wandering--
 
-/*DILON's phone bleeps*/
 
 And, 3, 2, 1, there’s my first job. It’s right here actually.
 
@@ -577,11 +635,11 @@ And, 3, 2, 1, there’s my first job. It’s right here actually.
  </div>
 
 </main>
-<<include "footer">>
+<<include "footersimple">>
 
 
 :: SD-06A {"position":"375,325","size":"100,100"}
-<<set $passage to "SD-06A">><<set $nextpassage to "SD-07">>
+<<set $passage to "SD-06A">><<set $nextpassage to "SD-07">><<audio ":all" stop>><<audio "SD_06A" play>>
 <main>
 
 I can see on the app that I have a few bags in the same order. Looks like someone is having a party. I won’t be able to carry everything by myself.
@@ -600,7 +658,7 @@ I’m going to run in, but you decide which ones you want to carry? It will save
 
 
 :: SD-06B {"position":"525,325","size":"100,100"}
-<<set $passage to "SD-06B">><<set $nextpassage to "SD-07">>
+<<set $passage to "SD-06B">><<set $nextpassage to "SD-07">><<audio ":all" stop>><<audio "SD_06B" play>>
 <main>
 
 I can see on the app that I have a few bags in the same order. Looks like someone is having a party. I won’t be able to carry everything by myself.
@@ -618,7 +676,7 @@ I’m going to run in, but you decide who carries which ones?
 
 
 :: SD-07 {"position":"450,450","size":"100,100"}
-<<set $passage to "SD-07">><<set $nextpassage to "SD-08">>
+<<set $passage to "SD-07">><<set $nextpassage to "SD-08">><<audio ":all" stop>><<audio "SD_07" play>>
 <main>
 <<set $code1 to setup.generate5LetterCode()>>
 
@@ -626,10 +684,10 @@ Here we are, here we are, here we are.
 We have to be speedy now; the customer is tracking our location.
 Thanks for taking some of these bags off my hand.
 I’m going to put the receipt back in the bag so we need to memorise the drop-off code for a speedy delivery.
-My dad used to have a trick when he was learning postcodes, he would make up a mnemonic story. I do the same with my pick-up codes. If it’s #SYFWDG that could be.. Spurs Yearn For Well Deserved Glory. #F7ARWOAR.. you could make the 7 an L and.. Feel Like a Room WithOut A Roof! Sorry, the song in my head.
+My dad used to have a trick when he was learning postcodes, he would make up a mnemonic story. I do the same with my pick-up codes. If it’s <h2 class="code">#SYFWDG</h2> that could be.. Spurs Yearn For Well Deserved Glory. <h2 class="code">#F7ARWOAR</h2>.. you could make the 7 an L and.. Feel Like a Room WithOut A Roof! Sorry, the song in my head.
 Anyway, here’s the code we have to remember:
 
-$code1
+<div class="code-wrapper"><h2 class="code">$code1</h2></div>
 
 Let me know when you’ve got it. Consign it to memory. I find the sillier the sentence, the easier it is for me to remember. Hold onto it because I’m going to put my phone back on navigation. I’ll need it in a moment.
 
@@ -639,16 +697,16 @@ Let me know when you’ve got it. Consign it to memory. I find the sillier the s
      
 
 </main>
-<<include "footer2">>
+<<include "footer">>
 
 
 :: SD-08 {"position":"450,575","size":"100,100"}
-<<set $passage to "SD-08">><<set $nextpassage to "SD-09">>
+<<set $passage to "SD-08">><<set $nextpassage to "SD-09">><<audio ":all" stop>><<set $map1 = setup.generateDirectionsMap([], [])>>
 <main>
 
-$code1
+<div class="code-wrapper"><h2 class="code">$code1</h2></div>
 
-/*MAP NEEDED*/
+$map1
 
 <<button "Here!">><<set $prevpass to $passage>><<goto "SD-09">><</button>>
 
@@ -656,11 +714,11 @@ $code1
      
 
 </main>
-<<include "footer2">>
+<<include "footer">>
 
 
 :: SD-09 {"position":"450,700","size":"100,100"}
-<<set $passage to "SD-09">><<set $nextpassage to "SD-10">>
+<<set $passage to "SD-09">><<set $nextpassage to "SD-10">><<audio ":all" stop>><<audio "SD_09" play>><<set $map2 = setup.generateDirectionsMap([], [])>>
 <main>
 
 Thanks for your help so far, we’re about a third of the way there.
@@ -693,7 +751,7 @@ We’re really in a rush. But my friend can look for a spot as we walk.
 
 Can you keep your eyes peeled for a good hiding spot? Somewhere near here? Let me know when you’ve found one.
 
-/*MAP NEEDED*/
+$map2
 
 <<button "Got it!">><<set $prevpass to $passage>><<goto "SD-10">><</button>>
 
@@ -701,14 +759,14 @@ Can you keep your eyes peeled for a good hiding spot? Somewhere near here? Let m
      
 
 </main>
-<<include "footer2">>
+<<include "footer">>
 
 
 :: SD-10 {"position":"450,825","size":"100,100"}
-<<set $passage to "SD-10">><<set $nextpassage to "SD-11">>
+<<set $passage to "SD-10">><<set $nextpassage to "SD-11">><<audio ":all" stop>><<audio "SD_10" play>><<set $map3 = setup.generateDirectionsMap([], [])>>
 <main>
 
-/*MAP NEEDED*/
+$map3
 Great, thanks for the help.
 
 
@@ -718,11 +776,11 @@ Great, thanks for the help.
      
 
 </main>
-<<include "footer2">>
+<<include "footer">>
 
 
 :: SD-11 {"position":"450,950","size":"100,100"}
-<<set $passage to "SD-11">><<set $nextpassage to "SD-12">>
+<<set $passage to "SD-11">><<set $nextpassage to "SD-12">><<audio ":all" stop>><<audio "SD_11" play>>
 <main>
 
 Thanks for that.
@@ -767,11 +825,11 @@ Right, I’ll read these out and you take a second to point out which building s
      
 
 </main>
-<<include "footer2">>
+<<include "footer">>
 
 
 :: SD-12 {"position":"450,1075","size":"100,100"}
-<<set $passage to "SD-12">><<set $nextpassage to "SD-13">>
+<<set $passage to "SD-12">><<set $nextpassage to "SD-13">><<audio ":all" stop>><<audio "SD_12" play>>
 <main>
 
 This one says ‘intimidating entrance’.
@@ -784,11 +842,11 @@ What could that possibly mean? Let me know when you have an idea.
      
 
 </main>
-<<include "footer2">>
+<<include "footer">>
 
 
 :: SD-13 {"position":"450,1200","size":"100,100"}
-<<set $passage to "SD-13">><<set $nextpassage to "SD-14">>
+<<set $passage to "SD-13">><<set $nextpassage to "SD-14">><<audio ":all" stop>><<audio "SD_13" play>>
 <main>
 
 Great. This next one says ‘loud and colourful’. I think?
@@ -801,11 +859,11 @@ Where could that be?
      
 
 </main>
-<<include "footer2">>
+<<include "footer">>
 
 
 :: SD-14 {"position":"450,1325","size":"100,100"}
-<<set $passage to "SD-14">><<set $nextpassage to "SD-15">>
+<<set $passage to "SD-14">><<set $nextpassage to "SD-15">><<audio ":all" stop>><<audio "SD_14" play>>
 <main>
 
 And this one says. One sec, it’s tiny and cursive. This one says ‘the mouse box’.
@@ -817,11 +875,11 @@ What on earth is that?
      
 
 </main>
-<<include "footer2">>
+<<include "footer">>
 
 
 :: SD-15 {"position":"450,1450","size":"100,100"}
-<<set $passage to "SD-15">><<set $nextpassage to "SD-16">>
+<<set $passage to "SD-15">><<set $nextpassage to "SD-16">><<audio ":all" stop>><<audio "SD_15" play>><<set $map4 = setup.generateDirectionsMap([], [])>>
 <main>
 
 And finally, this one says. ‘Artistic doorknob.’
@@ -829,9 +887,8 @@ Can you look out for it in the next minute?
 
 I appreciate the help
 
-/*Dilon's phone bleeps*/
 
-/*MAP NEEDED*/
+$map4
 
 No worries. We’ll keep our eyes peeled. But we need to run. I’ll keep my eyes on my map; you’ll look out for these destinations.
 
@@ -841,16 +898,16 @@ No worries. We’ll keep our eyes peeled. But we need to run. I’ll keep my eye
      
 
 </main>
-<<include "footer2">>
+<<include "footer">>
 
 
 :: SD-16 {"position":"450,1575","size":"100,100"}
-<<set $passage to "SD-16">><<set $nextpassage to "SD-17">>
+<<set $passage to "SD-16">><<set $nextpassage to "SD-17">><<audio ":all" stop>><<audio "SD_16" play>><<set $map5 = setup.generateDirectionsMap([], [])>>
 <main>
 
 Fantastic. Let’s keep moving.
 
-/*MAP NEEDED*/
+$map5
 
 <<button "Here">><<set $prevpass to $passage>><<goto "SD-17">><</button>>
 
@@ -858,11 +915,11 @@ Fantastic. Let’s keep moving.
      
 
 </main>
-<<include "footer2">>
+<<include "footer">>
 
 
 :: SD-17 {"position":"450,1700","size":"100,100"}
-<<set $passage to "SD-17">>
+<<set $passage to "SD-17">><<audio ":all" stop>><<audio "SD_17" play>>
 <main>
 
 Deary me, the 1700s and 1840s: and I thought my job was tough.
@@ -886,8 +943,7 @@ No more interruptions: we’re nearly here. It’s always best to arrive prepare
 
 
 :: SD-18A {"position":"375,1825","size":"100,100"}
-<<set $passage to "SD-18A">><<set $nextpassage to "SD-20">>
-<main>
+<<set $passage to "SD-18A">><<set $nextpassage to "SD-20">><<audio ":all" stop>><<audio "SD_18A" play>>
 
 Cheers.
 
@@ -897,30 +953,23 @@ Got it.
      
 
 </main>
-<<include "footer2">>
+<<include "footer">>
 
 
 :: SD-18B {"position":"525,1825","size":"100,100"}
-<<set $passage to "SD-16">>
-<main>
-
+<<set $passage to "SD-16">><<audio ":all" stop>><<audio ":all" stop>><<audio "SD_18B" play>>
 <<set $wrongcode1 to setup.generate5LetterCode()>>
-<<set $wrongcode2 to setup.generate5LetterCode()>>
-
-It was one of these three:
-
-<<set $answers to [
+<<set $wrongcode2 to setup.generate5LetterCode()>><<set $answers to [
 "<<button $code1>> <<set $prevpass to $passage>><<goto 'SD-19A'>><</button>>",
 "<<button $wrongcode1>> <<set $prevpass to $passage>><<goto 'SD-19B'>><</button>>",
 "<<button $wrongcode2>> <<set $prevpass to $passage>><<goto 'SD-19B'>><</button>>"
 ]>>
-
+<main>
+It was one of these three:
 <<for _i to 0; _i = $answers.length; _i++>>
 	<<run $answer = $answers.pluck()>>
     $answer
 <</for>>
-
-
 
 <div class = "codefeedback">
 </div>
@@ -933,7 +982,7 @@ It was one of these three:
 
 
 :: SD-19A {"position":"475,1950","size":"100,100"}
-<<set $passage to "SD-19A">><<set $nextpassage to "SD-20">>
+<<set $passage to "SD-19A">><<set $nextpassage to "SD-20">><<audio ":all" stop>><<audio "SD_19A" play>>
 <main>
 
 There we go. Thanks so much.
@@ -942,11 +991,11 @@ There we go. Thanks so much.
      
 
 </main>
-<<include "footer2">>
+<<include "footer">>
 
 
 :: SD-19B {"position":"600,1950","size":"100,100"}
-<<set $passage to "SD-19B">><<set $nextpassage to "SD-20">>
+<<set $passage to "SD-19B">><<set $nextpassage to "SD-20">><<audio ":all" stop>><<audio "SD_19B" play>>
 <main>
 
 Nevermind. I’ll ask the customer to remind me of their order. It might affect my tip or star rating, but that’s life. You’ll learn.
@@ -955,13 +1004,12 @@ Nevermind. I’ll ask the customer to remind me of their order. It might affect 
      
 
 </main>
-<<include "footer2">>
+<<include "footer">>
 
 
 :: SD-20 {"position":"450,2075","size":"100,100"}
-<<set $passage to "SD-20">><<set $nextpassage to "SD-21">>
+<<set $passage to "SD-20">><<set $nextpassage to "SD-21">><<audio ":all" stop>><<audio "SD_20" play>>
 <main>
-
 Okay. Time to unload.
 I’ll get mine out. Give me a second.
 Ah! Deary me.
@@ -974,7 +1022,6 @@ I’m going to open it whilst you unpack.
 You remember what you’re carrying? We had heavy, fragile and very hot bags.
 Great. I’ll catch my breath before we walk to the door
 
-/*letter opening sound*/
 
 You’ll never believe this. Look at this letter. I’ll read it out
 
@@ -984,16 +1031,17 @@ You’ll never believe this. Look at this letter. I’ll read it out
      
 
 </main>
-<<include "footer2">>
+<<include "footer">>
 
 
 :: SD-21 {"position":"450,2200","size":"100,100"}
-<<set $passage to "SD-21">><<set $nextpassage to "SD-22">>
+<<set $passage to "SD-21">><<set $nextpassage to "SD-22">><<audio ":all" stop>><<audio "SD_21" play>><<set $map6 = setup.generateDirectionsMap([], [])>>
 <main>
 
-/*Need an old typefacey font for this letter*/
+/*Need an old typefacey font for this letter - Not sure this is legible enough*/
+<p class="cursive">
+1844 Letter to the Editor
 
-1844 LETTER TO THE EDITOR
 Sir, With a view to abridge the labour of the letter carriers, and so save public time, allow me to suggest,
 
 1st. That a recommendation be issued from the Post Office that a letter-box with open mouth be fixed in every door, into which the letter carrier may slip all letters and newspapers with which he may be charged for each house, continuing to knock or ring, as at present, in case of no payment being required; in which case, having rung so as to warn the inmates of his call he may save much time, by passing to the next house, without waiting for the answer to his summons.
@@ -1004,18 +1052,18 @@ This will sufficiently advertise the people in the house that matters of unusual
 
 I remain, sir, your very obedient servant, D
 
-
-<<timed 3s>><<set $prevpass to $passage>><<goto "SD-22">><</timed>>
+</p>
+<<timed 20s>><<set $prevpass to $passage>><<goto "SD-22">><</timed>>
 
 
      
 
 </main>
-<<include "footer2">>
+<<include "footer">>
 
 
 :: SD-22 {"position":"450,2325","size":"100,100"}
-<<set $passage to "SD-21">><<set $nextpassage to "end">>
+<<set $passage to "SD-21">><<set $nextpassage to "end">><<audio ":all" stop>><<audio "SD_22" play>>
 <main>
 
 
@@ -1028,7 +1076,6 @@ future.
 
 But I’m not being paid to wonder. I’m being paid to deliver.
 
-/*Dilon’s phone rings.*/
 
 And if I want any additional payment in tips, we need to make this handover smooth
 and polite.
@@ -1037,26 +1084,21 @@ We’re nearly there. I’m going to go for two knocks, a third and loud one.
 
 One, two, three.
 
-/*The sound of two knocks, a third and loud one.*/
-
 Can you say the code out loud?
-
-/*The sound of a door swinging open.*/
 
 Cheers.
 
-/*Door slams shut*/
 
 That was simple. No messing around.
 I need to head to my next delivery. I’m sure I’ll see you in the city.
 Thanks for your help today! I don’t think I’ll ever forget it.
 You’ve been five stars.
 
-<<timed 3s>><<set $prevpass to $passage>><<goto "end">><</timed>>
+<<timed 20s>><<set $prevpass to $passage>><<goto "end">><</timed>>
 
 
 
 </main>
-<<include "footer2">>
+<<include "footer">>
 
 
